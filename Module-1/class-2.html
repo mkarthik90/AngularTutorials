@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        
+        var app = angular.module('module1', []);
+        app.controller('module1Controller', function($scope, module1Constant){
+            $scope.testVariable = 'Hello';
+            $scope.name = module1Constant;
+        });
+
+        <!-- Injecting depandancy -->
+        app.constant('module1Constant', 'Karthik')
+
+    </script>
+</head>
+<body>
+    <div ng-app="module1" ng-controller="module1Controller">
+        {{testVariable}} {{name}}
+    </div>
+
+</body>
+</html>
