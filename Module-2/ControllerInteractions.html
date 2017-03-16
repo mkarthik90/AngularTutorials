@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="interactiveApp">
+<head>
+    <title>Interactions with controller</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+<body>
+
+    <div ng-controller="interactiveController">
+        <div class="form-control">{{hello}}</div>
+        <button ng-click="changeHello()">Click to Change value of Hello</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        
+        var app = angular.module('interactiveApp', []);
+        app.controller('interactiveController', ['$scope', function($scope){
+            
+            $scope.hello = 'Hello World'
+            $scope.val = 0;
+            $scope.changeHello = function() {
+                if($scope.val == 0) {
+                    $scope.hello = 'Hello World!!';
+                    $scope.val = 1;    
+                } else {
+                    $scope.hello = 'Hello World';
+                    $scope.val = 0;
+                }
+                
+            }
+        }])
+
+    </script>
+
+
+</body>
+</html>
