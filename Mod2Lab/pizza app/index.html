@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app='myRestaurant'>
+
+<head>
+    <title>Tony's Pizza</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body ng-controller="menuController">
+    <div class="container">
+        <h1>Tony's Pizza</h1>
+        <h2>{{"Menu"}}</h2>
+        <h3>{{::model.title}}</h3>
+        
+
+        <div ng-repeat="menuItem in model.menuItems">
+            <label><input type="radio" name="category" ng-click="changeMainDish(menuItem)"> {{menuItem.item}}</label>
+        </div>
+        
+        <div>
+            <h3>Special Instructions</h3>
+            <textarea ng-model='model.specialInstruction' class='form-control'></textarea>
+        </div>
+    </div>
+
+    <div>
+        <h3>Selected item</h3>
+        <pre>{{model.mainDish}}</pre>
+    </div>
+
+    <div>
+        <h3>Special Instructions</h3>
+        <pre>{{model.specialInstruction}}</pre>
+    </div>
+
+    <div>
+        <h3>Order Summary</h3>
+        <pre>{{model.mainDish}} - ${{model.priceOfDish}} - {{model.specialInstruction}}</pre>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="menuController.js"></script>
+
+</body>
+
+</html>
