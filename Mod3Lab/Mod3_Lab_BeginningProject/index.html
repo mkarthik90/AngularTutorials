@@ -17,14 +17,14 @@
             <span ng-click="addTopping(topping)">{{topping}}</span>
         </div>
 
-        <div ng-show="(model.availableToppings | filter: model.search).length == 0" class="alert alert-danger alert-dismissable">
+        <div ng-show="(model.availableToppings | filter: model.search).length == 0 && model.search.length > 0" class="alert alert-danger alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
             No search results.
         </div>
 
         <div ng-show="model.success" class="alert alert-success alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            Topping added
+            Topping added <button ng-click="model.success = false">Close</button>
+
         </div>
 
         <div ng-hide="model.search">
