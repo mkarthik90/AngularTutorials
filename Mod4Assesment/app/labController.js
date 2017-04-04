@@ -9,6 +9,7 @@ app.controller('labController', [
         $scope.checkOddNumber = checkOddNumber;
         $scope.getRepos = getRepos;
         $scope.loadDetail = loadDetail;
+        $scope.model.search = '';
 
         function checkOddNumberHandler(input) {
             var defer = $q.defer();
@@ -26,7 +27,17 @@ app.controller('labController', [
 
         
         function getRepos() {
-            $scope.model.repos =  gitHub.getAll();
+            console.log('Get Repos called');
+            console.log($scope.model.search);
+            gitHub.getAll({ org: $scope.model.search }).$promise.then(function(response){
+                console.log(response);
+                $scope.model.repos = response;
+                $scope.model.error = '';
+            }, function(error) {
+                $scope.model.error = 'Error';
+                $scope.model.repos = '';
+            })  
+            ;
         }
 
         //function getRepos() {
@@ -62,7 +73,7 @@ app.controller('labController', [
         }*/
 
         function loadDetail(name) {
-            $scope.model.detail = gitHub.getDetail({ id: name });
+            $scope.model.detail = gitHub.getDetail({ id: name, org: $scope.model.search });
         }
 
 

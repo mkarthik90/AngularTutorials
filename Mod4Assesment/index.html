@@ -18,7 +18,8 @@
     </div>
 
     <div class="container">
-        <input class="btn btn-primary" type="button" name="getRepos" value="getRepos" ng-click="getRepos()" ng-hide="model.repos" />
+        <input type="text" class="form-control" ng-model="model.search" />
+        <input class="btn btn-primary" type="button" name="getRepos" value="Load Repos" ng-click="getRepos()"  />
     </div>
 
     <div class="container">
@@ -41,6 +42,9 @@
                     </td>
                 </tr>
             </table>
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
         </div>
         <div class="col-md-5" ng-show="model.detail">
             <h4>Detail</h4>
