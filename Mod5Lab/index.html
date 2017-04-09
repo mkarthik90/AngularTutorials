@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>Tony's Pizza - New User Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+</head>
+
+<body ng-controller="labController">
+    <div class="container">
+        <h1>New User Registration</h1>
+        <form name='registrationForm' class="form-horizontal" novalidate>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Username</label>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" name="username" ng-model="model.username" class="form-control" ng-required="true"/>
+                </div>
+                <span class="col-md-3 alert alert-danger" ng-show="(registrationForm.username.$touched || registrationForm.$submitted) && registrationForm.username.$invalid">
+                    User name field is invalid
+                 </span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Password</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="password" name="password" ng-model="model.password" class="form-control" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Email</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="email" name="email" ng-model="model.emailId" class="form-control" ng-required="!model.phoneNumber" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Name</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="name" ng-model="model.name" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Phone number</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="number" name="phoneNumber" ng-model="model.phoneNumber" class="form-control" ng-required="!model.emailId" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Favorite pizza</label>
+                </div>
+                <div class="col-md-10">
+                    <select name="selectedFavorite" ng-model="model.selectedFavorite">
+                        <option ng-repeat="favorite in favoritePizza" value="{{favorite}}">{{favorite}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" name="submit" class="btn btn-primary" ng-disabled="registrationForm.$invalid" ng-click="submit(model)"/>
+                    <button class="btn btn-default" ng-click="reset()">Reset</button>
+                </div>
+            </div>
+            <pre>{{model | json}}</pre>
+        </form>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+    <script src="scripts/registrationService.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/labController.js"></script>
+    
+</body>
+
+</html>

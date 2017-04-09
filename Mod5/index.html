@@ -21,6 +21,29 @@
         </form>
     </div>
 
+    <div class="container" ng-controller="validationController">
+        <form name='thisForm' novalidate="true">
+            Name: <input type="text" name="thisName" ng-model="thisName" required="true" />
+            Email: <input type="email" name="emailId" required="true" ng-model="emailId" />
+            Number: <input type="text" name="onlyText" required="true" ng-pattern='/^([^0-9]*)$/' ng-model="onlyText" />
+            <br />
+            <span ng-show="thisForm.thisName.$touched && thisForm.thisName.$invalid">
+                Please enter a name
+            </span>
+            <span ng-show="thisForm.emailId.$touched && thisForm.emailId.$invalid">
+                Please enter a valid email.
+            </span>
+            <span ng-show="thisForm.onlyText.$touched && thisForm.onlyText.$invalid">Enter only alphabets!</span>
+            <br/>
+            Enter either phone number of email address. 
+            <br/>
+            Email <input type="email" name="email" ng-model="model.emailAddress" ng-require="!model.phoneNumber" class="form-control" ng-hide="model.phoneNumber"/>
+            Phone Number <input type="text" name="phoneNumber" ng-model="model.phoneNumber" ng-require="!model.emailAddress" class="form-control" ng-hide="model.emailAddress"/>
+        </form>
+    </div>
+
+    
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="js/app.js"></script>
