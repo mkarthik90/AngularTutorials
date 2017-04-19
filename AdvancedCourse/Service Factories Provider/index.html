@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+<head>
+    <meta charset="utf-8"/>
+    <title>Testing of providers services and factories</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container" ng-controller="testController">
+    <h2>Testing services.</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Services are created using new operator in javascript</li>
+        <li class="list-group-item">Since services are created using new operator, all values should be bound to this keyword.</li>
+    </ul>
+
+    <form name='serviceSearchForm' class="form-horizontal" novalidate="true">
+        <div class="form-group">
+            <label class="col-md-2">Search Term</label>
+            <div class="col-md-10">
+                <input type="text" name="term" ng-model='serviceModel.term' ng-required='true' />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2">Limit</label>
+            <div class="col-md-10">
+                <input type="number" name="limit" ng-model='serviceModel.limit'/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <input type="submit" ng-click="serviceSubmit()" class="btn btn-primary" ng-disabled="serviceSearchForm.$invalid"/>
+            </div>
+            <div class="col-md-2">
+                <input type="reset" ng-click="serviceReset()" name="reset" class="btn" />
+            </div>
+        </div>
+    </form>
+
+    <form name='factorySearchForm' class="form-horizontal" novalidate="true">
+        <div class="form-group">
+            <label class="col-md-2">Search Term</label>
+            <div class="col-md-10">
+                <input type="text" name="term" ng-model='factoryModel.term' ng-required='true' />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2">Limit</label>
+            <div class="col-md-10">
+                <input type="number" name="limit" ng-model='factoryModel.limit'/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <input type="submit" ng-click="factorySubmit()" class="btn btn-primary" ng-disabled="factorySearchForm.$invalid"/>
+            </div>
+            <div class="col-md-2">
+                <input type="reset" ng-click="factoryReset()" name="reset" class="btn" />
+            </div>
+        </div>
+    </form>
+
+    <div class="alert alert-success"  ng-show="factoryModel.result">
+        {{factoryModel.result}}
+    </div>
+
+    <div class="alert alert-danger" ng-show="factoryModel.resultError">
+        {{factoryModel.resultError}}
+    </div>
+
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="scripts/service.js"></script>
+    <script src="scripts/factory.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controller.js"></script>
+
+</body>
+</html>
