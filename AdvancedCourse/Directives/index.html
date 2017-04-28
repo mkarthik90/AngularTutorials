@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+</head>
+<body ng-controller="appController">
+    
+    <div>
+        <my-directive app-directive2 value1='valueToBePassed'>
+            <span>This is transculded from html.</span>
+        </my-directive>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/appController.js"></script>
+    <script src="app/appDirective2.js"></script>
+    <script src="app/appDirective.js"></script>
+</body>
+</html>

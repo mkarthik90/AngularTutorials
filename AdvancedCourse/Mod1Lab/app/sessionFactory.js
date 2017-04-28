@@ -1,9 +1,11 @@
-angular.module('app').factory('SessionFactory', ['$window', function($window){
+angular.module('app')
+    .factory('SessionFactory', ['$window', 'formattingFactory', 
+    function($window, formattingFactory){
     
         var sessionFactory = {};
 
         sessionFactory.save = function(key, value) {
-            $window.sessionStorage.setItem(key, value);
+            $window.sessionStorage.setItem(key, formattingFactory.format(value));
         };
 
         sessionFactory.get = function(key, value) {
@@ -17,3 +19,4 @@ angular.module('app').factory('SessionFactory', ['$window', function($window){
         return sessionFactory;
 
 }])
+
