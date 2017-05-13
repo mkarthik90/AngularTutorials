@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="animationApp">
+<head>
+    <title>Animation using Angular and CSS</title>
+    <style type="text/css">
+        .animateddiv {
+            transition: all linear .5s;
+            opacity: 1;
+        }
+
+        .animateddiv.ng-hide {
+            opacity: 0
+        }
+    </style>
+</head>
+<body ng-controller="LabController">
+
+    <div class="animateddiv" ng-hide='!toggle'>
+        Some content that you want to fade in and out.
+    </div>
+
+    <button class="btn btn-primary" ng-click="toggle = !toggle">Click me to animate</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/labController.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html ng-app="app"> 
+<head>
+
+    <title>Angular Bootstrap and Animation</title>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body ng-controller="LabController as vm">
+    <div class="container">
+       <h1>Angular Bootstrap and Animation</h1>
+       <div class="form-group">
+            <button type="button" uib-tooltip='Click this button to do something nice!' class="btn btn-primary">Hover to show the tooltip</button>
+            <button type="button" uib-popover='Pop over content goes here!' popover-title='Pop over title' popover-placement="bottom" class="btn btn-primary">Click to see the popover</button>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-warning" ng-click="vm.addWarning()">Add Warning</button>
+            <button  type="button" class="btn btn-danger" ng-click="vm.addDanger()">Add Danger</button>
+        </div>
+        <uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" dismiss-on-timeout="10000" close="vm.dismissAlert($index)">{{alert.text}}</uib-alert>
+    </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/LabController.js"></script>
+</body>
+</html>
