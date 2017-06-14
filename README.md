@@ -1,2 +1,2 @@
 # AngularTutorials
-This repo contains sample angular js code. 
+This repo contains sample Angular code. 
